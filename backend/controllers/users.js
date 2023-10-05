@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -15,6 +16,11 @@ const InternalServerError = require('../errors/internal-server-err');
 const ConflictError = require('../errors/conflict-err');
 const BadRequest = require('../errors/bad-request');
 
+const token = jwt.sign(
+  { _id: user._id },
+  NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
+);
+
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
@@ -22,7 +28,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        token,
         { expiresIn: '7d' },
       );
       res
