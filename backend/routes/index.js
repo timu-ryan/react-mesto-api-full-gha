@@ -10,7 +10,7 @@ const {
 const NotFoundError = require('../errors/not-found-err');
 const linkRegEx = require('../utils/regularEspresions');
 
-app.get('/crash-test', () => {
+router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
