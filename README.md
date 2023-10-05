@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.20.172
+IP 51.250.20.172
 
 Frontend https://timuryanst.nomoredomainsrocks.ru
 
