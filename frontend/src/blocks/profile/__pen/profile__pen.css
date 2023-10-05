@@ -1,0 +1,23 @@
+.profile__pen {
+  position: absolute;
+  border-radius: 50px;
+  border: none;
+  /* top: 47px; */
+  /* left: 47px; */
+  align-self: auto;
+  width: 120px;
+  height: 120px;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(images/pen.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+}
+
+.profile__pen:hover {
+  z-index: 3;
+  cursor: pointer;
+}
+

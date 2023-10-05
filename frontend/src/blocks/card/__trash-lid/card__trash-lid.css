@@ -1,0 +1,7 @@
+.card__trash-lid {
+  background-image: url(images/trash-lid.svg);
+  width: 18px;
+  height: 4.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

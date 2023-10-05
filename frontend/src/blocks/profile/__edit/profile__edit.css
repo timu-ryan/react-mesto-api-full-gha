@@ -1,0 +1,24 @@
+.profile__edit {
+  border: 1px solid white;
+  background-color: inherit;
+  width: 24px;
+  height: 24px;
+  margin: 36px 0 0 24px;
+  background-image: url(images/pen.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 920px) {
+  .profile__edit {
+    margin: 36px auto 0 14px;
+    background-image: url(images/mobile_pen.svg);
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.profile__edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
