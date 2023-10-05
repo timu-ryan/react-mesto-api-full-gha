@@ -16,10 +16,7 @@ const InternalServerError = require('../errors/internal-server-err');
 const ConflictError = require('../errors/conflict-err');
 const BadRequest = require('../errors/bad-request');
 
-const token = jwt.sign(
-  { _id: user._id },
-  NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
-);
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
@@ -28,9 +25,10 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        token,
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
+
       res
         .status(SUCCESS_CODE)
         // .cookie('jwt', token, { httpOnly: true })
