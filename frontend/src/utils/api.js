@@ -98,8 +98,4 @@ class Api {
 
 export default new Api({
   url: "https://api.timuryanst.nomoredomainsrocks.ru",
-  headers: {
-    authorization: "becc8ca5-d976-4b95-9454-f44bbb906e9a",
-    "Content-Type": "application/json",
-  },
 });
