@@ -12,6 +12,8 @@ const allowedCors = [
   'https://praktikum.tk',
   'http://praktikum.tk',
   'localhost:3000',
+  'https://api.timuryanst.nomoredomainsrocks.ru',
+  'https://timuryanst.nomoredomainsrocks.ru',
 ];
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
