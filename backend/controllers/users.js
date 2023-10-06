@@ -16,11 +16,9 @@ const InternalServerError = require('../errors/internal-server-err');
 const ConflictError = require('../errors/conflict-err');
 const BadRequest = require('../errors/bad-request');
 
-const { NODE_ENV = 'production', JWT_SECRET = 'dev-secret' } = process.env;
-
 const login = (req, res, next) => {
   const { email, password } = req.body;
-
+  const { NODE_ENV = 'production', JWT_SECRET = 'not-dev-secret' } = process.env;
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
