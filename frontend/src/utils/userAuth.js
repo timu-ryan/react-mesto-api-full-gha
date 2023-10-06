@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://timuryanst.nomoredomainsrocks.ru';
+export const BASE_URL = 'https://api.timuryanst.nomoredomainsrocks.ru';
 
 const getResponseData = (res) => {
   if (!res.ok) {
