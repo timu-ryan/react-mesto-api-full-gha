@@ -98,4 +98,9 @@ class Api {
 
 export default new Api({
   url: "https://api.timuryanst.nomoredomainsrocks.ru",
+  headers: {
+    authorization: `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
 });
