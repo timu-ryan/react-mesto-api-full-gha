@@ -77,7 +77,7 @@ function App() {
           .catch(err => console.log(err));
       }
     }
-   } 
+   }
 
 
   const handleCardClick = (card) => {
@@ -86,13 +86,13 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
+
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       })
       .catch((err) => console.log(`Error: ${err}`));
-  } 
+  }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id)

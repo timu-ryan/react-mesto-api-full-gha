@@ -39,7 +39,7 @@ export const authorize = (email, password) => {
       return data;
     }
   })
-}; 
+};
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
