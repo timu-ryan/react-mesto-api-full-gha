@@ -1,7 +1,7 @@
 class Api {
   constructor(config) {
     this._url = config.url;
-    this._headers = config.headers;
+    //this._headers = config.headers;
   }
 
   _getResponseData(res) {
@@ -12,95 +12,135 @@ class Api {
   }
 
   getInitialCards() {
-     return fetch(`${this._url}/cards`, {
+    const fetchOptions = {
       method: 'GET',
-      headers: this._headers,
-    })
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/cards`, fetchOptions)
       .then(res => this._getResponseData(res));
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    const fetchOptions = {
       method: 'GET',
-      headers: this._headers,
-    })
-    .then(res => this._getResponseData(res));
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/users/me`, fetchOptions)
+      .then(res => this._getResponseData(res));
   }
   //editMyProfile
   setUserInfo(newName, newDescription) {
-    return fetch(`${this._url}/users/me`, {
+    const fetchOptions = {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
       body: JSON.stringify({
         name: newName,
         about: newDescription
-      })
-    })
+      }),
+    };
+    return fetch(`${this._url}/users/me`, fetchOptions)
     .then(res => this._getResponseData(res));
   }
 
   setNewCard(newCardName, newCardLink, isUser) {
-    return fetch(`${this._url}/cards`, {
+    const fetchOptions = {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
       body: JSON.stringify({
         name: newCardName,
         link: newCardLink,
         isUser: isUser,
-      })
-    })
-    .then(res => this._getResponseData(res));
+      }),
+    };
+    return fetch(`${this._url}/cards`, fetchOptions)
+      .then(res => this._getResponseData(res));
   }
-  
+
   setLikeCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+    const fetchOptions = {
       method: 'PUT',
-      headers: this._headers,
-    })
-    .then(res => this._getResponseData(res));
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/cards/${cardId}/likes`, fetchOptions)
+      .then(res => this._getResponseData(res));
   }
 
   removeLikeCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+    const fetchOptions = {
       method: 'DELETE',
-      headers: this._headers,
-    })
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/cards/${cardId}/likes`, fetchOptions)
       .then(res => this._getResponseData(res));
   }
 
   changeLikeCardStatus(cardId, like) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    const fetchOptions = {
       method: like ? 'PUT' : 'DELETE',
-      headers: this._headers,
-    })
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/cards/likes/${cardId}`, fetchOptions)
       .then(res => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
+    const fetchOptions = {
       method: 'DELETE',
-      headers: this._headers,
-    })
-    .then(res => this._getResponseData(res));
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    };
+    return fetch(`${this._url}/cards/${cardId}`, fetchOptions)
+      .then(res => this._getResponseData(res));
   }
 
   setNewAvatar(data) {
-    return fetch(`${this._url}/users/me/avatar`, {
+    const fetchOptions = {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
       body: JSON.stringify({
         avatar: data,
-      })
-    })
-    .then(res => this._getResponseData(res));
+      }),
+    };
+    return fetch(`${this._url}/users/me/avatar`, fetchOptions)
+      .then(res => this._getResponseData(res));
   }
 }
 
 export default new Api({
   url: "https://api.timuryanst.nomoredomainsrocks.ru",
-  headers: {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
 });
